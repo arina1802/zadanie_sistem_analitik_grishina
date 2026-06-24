@@ -1,0 +1,83 @@
+Когда пользователь открывает экран «Магазины партнёров», мобильное приложение отправляет на сервер вот такой GET-запрос:
+GET https://api.petrushka-green.ru/v1/partner-stores
+| Параметр | Тип | Обязательный | Описание | Пример |
+|----------|-----|--------------|----------|--------|
+| `page` | integer | Нет | Номер страницы (по умолчанию 1) | `?page=1` |
+| `limit` | integer | Нет | Количество магазинов на странице (по умолчанию 20) | `&limit=20` |
+| `city` | string | Нет | Фильтр по городу | `&city=Москва` |
+| `category` | string | Нет | Фильтр по категории магазина | `&category=продукты` |
+
+Ответ (JSON)
+Сервер обрабатывает запрос и возвращает данные
+```json
+{
+  "success": true,
+  "data": {
+    "stores": [
+      {
+        "id": 1,
+        "name": "METRO",
+        "logoUrl": "https://cdn.petrushka-green.ru/partners/metro.png",
+        "shortDescription": "Мелкооптовый гипермаркет для бизнеса и дома",
+        "externalUrl": "https://www.metro-cc.ru/?partner=petrushka",
+        "cashback": 5,
+        "category": "Гипермаркеты",
+        "rating": 4.7,
+        "workingHours": "Круглосуточно",
+        "deliveryAvailable": true,
+        "minOrderAmount": 1000,
+        "isActive": true
+      },
+      {
+        "id": 2,
+        "name": "АШАН",
+        "logoUrl": "https://cdn.petrushka-green.ru/partners/auchan.png",
+        "shortDescription": "Сеть гипермаркетов с широким ассортиментом",
+        "externalUrl": "https://www.auchan.ru/?partner=petrushka",
+        "cashback": 7,
+        "category": "Гипермаркеты",
+        "rating": 4.5,
+        "workingHours": "08:00 - 23:00",
+        "deliveryAvailable": true,
+        "minOrderAmount": 500,
+        "isActive": true
+      },
+      {
+        "id": 3,
+        "name": "ВкусВилл",
+        "logoUrl": "https://cdn.petrushka-green.ru/partners/vkusvill.png",
+        "shortDescription": "Натуральные продукты для здорового питания",
+        "externalUrl": "https://vkusvill.ru/?partner=petrushka",
+        "cashback": 10,
+        "category": "Продукты",
+        "rating": 4.9,
+        "workingHours": "07:00 - 23:00",
+        "deliveryAvailable": true,
+        "minOrderAmount": 300,
+        "isActive": true
+      },
+      {
+        "id": 4,
+        "name": "ВИКТОРИЯ",
+        "logoUrl": "https://cdn.petrushka-green.ru/partners/viktoria.png",
+        "shortDescription": "Супермаркеты у дома с собственным производством",
+        "externalUrl": "https://www.victoria-group.ru/?partner=petrushka",
+        "cashback": 3,
+        "category": "Супермаркеты",
+        "rating": 4.6,
+        "workingHours": "Круглосуточно",
+        "deliveryAvailable": false,
+        "minOrderAmount": 0,
+        "isActive": true
+      }
+    ],
+    "pagination": {
+      "currentPage": 1,
+      "totalPages": 1,
+      "totalItems": 4,
+      "perPage": 20
+    }
+  },
+  "error": null,
+  "timestamp": "2026-06-24T14:30:00+03:00"
+}
